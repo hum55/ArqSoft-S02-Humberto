@@ -9,6 +9,23 @@
             _motor = motor;
         }
 
+        public static string PedirCategoria(List<string> categorias)
+        {
+            Console.WriteLine("Elige una categoría:");
+            for (int i = 0; i < categorias.Count; i++)
+            {
+                Console.WriteLine($"  {i + 1}. {categorias[i]}");
+            }
+
+            int opcion;
+            do
+            {
+                Console.Write("Opción: ");
+            } while (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 1 || opcion > categorias.Count);
+
+            return categorias[opcion - 1];
+        }
+
         public void MostrarTablero()
         {
             Console.Clear();
@@ -20,15 +37,16 @@
 
             Console.Write("Palabra: ");
 
-            if (_motor.MostrarPista)
-                Console.WriteLine($"Pista: la palabra empieza con '{_motor.PalabraSecreta[0]}'");
-
             foreach (char c in _motor.PalabraSecreta)
             {
                 Console.Write(_motor.LetrasUsadas.Contains(c) ? c : '_');
+                Console.Write(' ');
             }
 
             Console.WriteLine();
+
+            if (_motor.MostrarPista)
+                Console.WriteLine($"Pista: la palabra empieza con '{_motor.PalabraSecreta[0]}'");
         }
 
         public char PedirLetra()
@@ -45,6 +63,7 @@
             Console.Write("\n¿Jugar otra vez? (s/n): ");
             return Console.ReadLine()?.ToLower() == "s";
         }
+
         private void MostrarAhorcado()
         {
             string[] etapas = new string[]
