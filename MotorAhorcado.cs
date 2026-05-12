@@ -21,6 +21,8 @@
         public bool EsLetraCorrecta(char letra) =>
             _palabraSecreta.Contains(letra);
 
+        public bool MostrarPista => _intentosRestantes <= 3;
+
         public void RegistrarLetra(char letra)
         {
             _letrasUsadas.Add(letra);
