@@ -5,12 +5,45 @@ namespace Ahorcado
 {
     public class Juego
     {
-        private List<string> _palabras = new()
+        private Dictionary<string, List<string>> _categorias = new()
         {
-            "arquitectura", "interfaz", "polimorfismo",
-            "encapsulamiento", "herencia", "abstraccion",
-            "compilacion", "depuracion", "algoritmo", "variable",
-            "constante", "funcion", "clase", "objeto", "parametro"
+            {
+                "Programacion",
+                new List<string>
+                {
+                    "arquitectura", "interfaz", "polimorfismo",
+                    "encapsulamiento", "herencia", "abstraccion",
+                    "compilacion", "depuracion", "algoritmo", "variable",
+                    "constante", "funcion", "clase", "objeto", "parametro"
+                }
+            },
+            {
+                "Animales",
+                new List<string>
+                {
+                    "gato", "perro", "elefante", "jirafa", "leon",
+                    "tigre", "oso", "pajaro", "pez", "serpiente",
+                    "caballo", "vaca", "oveja", "cerdo", "conejo"
+                }
+            },
+            {
+                "Frutas",
+                new List<string>
+                {
+                    "manzana", "platano", "naranja", "fresa", "durazno",
+                    "sandia", "melon", "pina", "uva", "kiwi",
+                    "limon", "lima", "mora", "cereza", "papaya"
+                }
+            },
+            {
+                "Paises",
+                new List<string>
+                {
+                    "argentina", "brasil", "canada", "dinamarca", "españa",
+                    "francia", "grecia", "hungria", "italia", "japon",
+                    "mexico", "noruega", "portugal", "rusia", "tailandia"
+                }
+            }
         };
 
         private Dictionary<string, string> _pistas = new()
@@ -29,7 +62,37 @@ namespace Ahorcado
             { "funcion", "Bloque de codigo reutilizable" },
             { "clase", "Plantilla para crear objetos" },
             { "objeto", "Instancia de una clase" },
-            { "parametro", "Dato que recibe una funcion" }
+            { "parametro", "Dato que recibe una funcion" },
+
+            { "gato", "Felino domestico" },
+            { "perro", "Mejor amigo del hombre" },
+            { "elefante", "Animal mas grande de tierra" },
+            { "jirafa", "Animal con cuello muy largo" },
+            { "leon", "Rey de la selva" },
+            { "tigre", "Felino salvaje con rayas" },
+            { "oso", "Animal grande y peligroso" },
+            { "pajaro", "Animal con plumas y alas" },
+            { "pez", "Animal acuatico con branquias" },
+            { "serpiente", "Reptil sin patas" },
+
+            { "manzana", "Fruta roja o verde" },
+            { "platano", "Fruta amarilla alargada" },
+            { "naranja", "Fruta citrica de color naranja" },
+            { "fresa", "Fruta roja pequeña" },
+            { "sandia", "Fruta grande con semillas negras" },
+            { "melon", "Fruta dulce naranja" },
+            { "pina", "Fruta tropical con corona" },
+            { "uva", "Fruta pequeña en racimos" },
+            { "kiwi", "Fruta verde con semillas" },
+
+            { "argentina", "Pais de Sudamerica" },
+            { "brasil", "Pais mas grande de Sudamerica" },
+            { "canada", "Pais de Norteamerica" },
+            { "españa", "Pais de Europa" },
+            { "france", "Pais europeo conocido por la Torre Eiffel" },
+            { "italia", "Pais con forma de bota" },
+            { "japon", "Pais asiatico de oriente" },
+            { "mexico", "Pais de Norteamerica" }
         };
 
         private string _palabraSecreta;
@@ -37,11 +100,10 @@ namespace Ahorcado
         private List<char> _letrasFallidas;
         private int _intentosRestantes;
         private bool _pistaMostrada;
+        private string _categoriaActual;
 
         public Juego()
         {
-            var random = new Random();
-            _palabraSecreta = _palabras[random.Next(_palabras.Count)];
             _letrasUsadas = new List<char>();
             _letrasFallidas = new List<char>();
             _intentosRestantes = 6;
@@ -50,12 +112,24 @@ namespace Ahorcado
 
         public void Jugar()
         {
+            // Mostrar menu de categorias
+            _categoriaActual = MostrarMenuCategorias();
+
+            if (_categoriaActual == null)
+                return; // Si cancela
+
+            // Seleccionar palabra aleatoria de la categoria
+            var palabrasCategoria = _categorias[_categoriaActual];
+            var random = new Random();
+            _palabraSecreta = palabrasCategoria[random.Next(palabrasCategoria.Count)];
+
             bool jugarDeNuevo = true;
 
             while (jugarDeNuevo)
             {
                 Console.Clear();
-                Console.WriteLine("=== AHORCADO ===\n");
+                Console.WriteLine("=== AHORCADO ===");
+                Console.WriteLine("Categoria: {0}\n", _categoriaActual);
 
                 while (_intentosRestantes > 0)
                 {
@@ -67,6 +141,13 @@ namespace Ahorcado
                         Console.Write("\nJugar otra vez? (s/n): ");
                         string resp = Console.ReadLine() ?? "n";
                         jugarDeNuevo = (resp.ToLower() == "s");
+
+                        if (jugarDeNuevo)
+                        {
+                            // Reiniciar para nueva partida
+                            var nuevoJuego = new Juego();
+                            nuevoJuego.Jugar();
+                        }
                         return;
                     }
 
@@ -121,6 +202,45 @@ namespace Ahorcado
             }
         }
 
+        private string MostrarMenuCategorias()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("=== SELECCIONA UNA CATEGORIA ===\n");
+
+                int i = 1;
+                foreach (var categoria in _categorias.Keys)
+                {
+                    Console.WriteLine("  {0} - {1}", i, categoria);
+                    i++;
+                }
+                Console.WriteLine("  0 - Volver");
+
+                Console.Write("\nOpcion: ");
+                string opcion = Console.ReadLine();
+
+                int.TryParse(opcion, out int numero);
+
+                if (numero == 0)
+                    return null;
+
+                if (numero >= 1 && numero <= _categorias.Count)
+                {
+                    i = 1;
+                    foreach (var categoria in _categorias.Keys)
+                    {
+                        if (i == numero)
+                            return categoria;
+                        i++;
+                    }
+                }
+
+                Console.WriteLine("Opcion no valida");
+                System.Threading.Thread.Sleep(1000);
+            }
+        }
+
         private bool VerificarVictoria()
         {
             foreach (char c in _palabraSecreta)
@@ -134,19 +254,20 @@ namespace Ahorcado
         private void MostrarTablero()
         {
             Console.Clear();
+            Console.WriteLine("=== AHORCADO ===");
+            Console.WriteLine("Categoria: {0}\n", _categoriaActual);
+
             MostrarAhorcado();
             Console.WriteLine("\nIntentos restantes: {0}", _intentosRestantes);
             Console.WriteLine("Letras fallidas: {0}", string.Join(", ", _letrasFallidas));
 
             // Mostrar pista si tiene 3 o mas errores
-            if (_letrasFallidas.Count >= 3 && !_pistaMostrada)
+            if (_letrasFallidas.Count >= 3)
             {
-                _pistaMostrada = true;
-                Console.WriteLine("\nPISTA: {0}", _pistas[_palabraSecreta]);
-            }
-            else if (_letrasFallidas.Count >= 3 && _pistaMostrada)
-            {
-                Console.WriteLine("\nPISTA: {0}", _pistas[_palabraSecreta]);
+                if (_pistas.ContainsKey(_palabraSecreta))
+                {
+                    Console.WriteLine("\nPISTA: {0}", _pistas[_palabraSecreta]);
+                }
             }
 
             Console.Write("\nPalabra: ");
