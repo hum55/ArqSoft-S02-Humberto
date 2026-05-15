@@ -115,16 +115,17 @@ Estudiante de Ingeniería en Software — Tecnológico de Software
 ---
 
 ## 🤖 Cláusula de Uso de Inteligencia Artificial
-
-> Yo, **Humberto Ramírez Gruintal**, estudiante de Ingeniería en Software del **Tecnológico de Monterrey**, 
-> declaro que en el desarrollo de este módulo se utilizó **inteligencia artificial (Claude, de Anthropic)** 
-> como herramienta de apoyo para la corrección de errores en la interfaz de usuario, depuración de código y optimización de la estructura de clases. 
-> El diseño, la lógica del juego y la integración fueron realizados por el autor. Todo el código fue revisado y validado antes de su implementación.
 >
-> **Fecha:** Mayo 2026 | **Institución:** Tecnológico de Monterrey
+> Declaración de uso de herramientas de IA
+>
+> Yo, Humberto Ramírez Gruintal, estudiante de Ingeniería en Software del Tecnológico de Software, 
+> declaro que en el desarrollo de este proyecto se utilizó inteligencia artificial (Claude, de Anthropic) 
+> Para la Correcion de Errores y la mejora de interfaz grafica de sistema.
+>
+> Fecha: Mayo 2026 Institución: Tecnologico de Software
 
 ---
 
 <p align="center">
-  <i>Desarrollado con ❤️ por Humberto Ramírez Gruintal — Tec de Monterrey, 2026</i>
+  <i>Desarrollado con ❤️ por Humberto Ramírez Gruintal — Tec de Software, 2026</i>
 </p>
