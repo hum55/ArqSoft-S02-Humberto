@@ -197,5 +197,5 @@ Este proyecto fue desarrollado con fines académicos como parte del programa de 
 ---
 
 <p align="center">
-  <i>Desarrollado con ❤️ por Humberto Ramírez Gruintal — Tec de Soft, 2026</i>
+  <i>Desarrollado con ❤️ por Humberto Ramírez Gruintal — Tec de Software, 2026</i>
 </p>
