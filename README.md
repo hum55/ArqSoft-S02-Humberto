@@ -1,4 +1,4 @@
-# ?? Doom Style � Shooter Pseudo-3D en Consola
+﻿# 💥 Doom Style — Shooter Pseudo-3D en Consola
 
 <p align="center">
   <img src="docs/img/doom_banner.png" alt="Doom Style Banner" width="800"/>
@@ -6,13 +6,13 @@
 
 ---
 
-## ?? Descripci�n
+## 📋 Descripción
 
-**Doom Style** es un videojuego de disparos en primera persona desarrollado en **C# para consola**, que implementa un motor de **raycasting pseudo-3D** renderizado completamente en caracteres ASCII. Inspirado en el cl�sico DOOM (1993), el juego permite explorar niveles, combatir enemigos con IA y avanzar a trav�s de m�ltiples niveles de dificultad.
+**Doom Style** es un videojuego de disparos en primera persona desarrollado en **C# para consola**, que implementa un motor de **raycasting pseudo-3D** renderizado completamente en caracteres ASCII. Inspirado en el clásico DOOM (1993), el juego permite explorar niveles, combatir enemigos con IA y avanzar a través de múltiples niveles de dificultad.
 
 ---
 
-## ?? Gameplay
+## 🎮 Gameplay
 
 <p align="center">
   <img src="docs/img/doom_gameplay_1.png" alt="Doom Style Gameplay" width="700"/>
@@ -20,12 +20,12 @@
 
 ---
 
-## ??? Controles
+## 🕹️ Controles
 
-| Tecla | Acci�n |
+| Tecla | Acción |
 |-------|--------|
 | `W` | Mover adelante |
-| `S` | Mover atr�s |
+| `S` | Mover atrás |
 | `A` | Rotar izquierda |
 | `D` | Rotar derecha |
 | `Q` | Strafe izquierda |
@@ -36,47 +36,47 @@
 
 ---
 
-## ??? Arquitectura de Clases
+## 🏗️ Arquitectura de Clases
 
 ```
 MotorDoom.cs : iMotorJuego
-?
-??? Raycasting Engine
-?   ??? LanzarRayo()                ? Calcula distancia a muros
-?   ??? ObtenerCaracterMuro()       ? Textura seg�n distancia (????)
-?   ??? RenderizarEnemigos()        ? Sprites basados en distancia
-?   ??? DibujarArmaEnBuffer()       ? Pistola ASCII animada
-?
-??? MapaDoom.cs
-?   ??? Grid 16x16 con tipos de muros
-?   ??? Nivel1() / Nivel2()         ? Layouts de niveles
-?   ??? EsMuro()                    ? Detecci�n de colisiones
-?   ??? ObtenerSpawn()              ? Punto de inicio
-?
-??? Jugador.cs
-?   ??? MoverAdelante/Atras()       ? Con colisi�n
-?   ??? MoverIzquierda/Derecha()    ? Strafe
-?   ??? RotarIzquierda/Derecha()    ? Rotaci�n
-?   ??? Disparar()                  ? Sistema de munici�n
-?   ??? RecibirDano() / Curar()     ? Sistema de vida
-?
-??? EnemigoDoom.cs
-    ??? 4 tipos: Zombi, Demonio, Cacodemon, Baron
-    ??? Perseguir()                 ? IA de persecuci�n
-    ??? PuedeAtacar()               ? Rango de ataque
-    ??? ObtenerSprite()             ? ASCII art por distancia
-    ??? DistanciaA()                ? C�lculo de distancia
+│
+├── Raycasting Engine
+│   ├── LanzarRayo()                → Calcula distancia a muros
+│   ├── ObtenerCaracterMuro()       → Textura según distancia (█▓▒░)
+│   ├── RenderizarEnemigos()        → Sprites basados en distancia
+│   └── DibujarArmaEnBuffer()       → Pistola ASCII animada
+│
+├── MapaDoom.cs
+│   ├── Grid 16x16 con tipos de muros
+│   ├── Nivel1() / Nivel2()         → Layouts de niveles
+│   ├── EsMuro()                    → Detección de colisiones
+│   └── ObtenerSpawn()              → Punto de inicio
+│
+├── Jugador.cs
+│   ├── MoverAdelante/Atras()       → Con colisión
+│   ├── MoverIzquierda/Derecha()    → Strafe
+│   ├── RotarIzquierda/Derecha()    → Rotación
+│   ├── Disparar()                  → Sistema de munición
+│   └── RecibirDano() / Curar()     → Sistema de vida
+│
+└── EnemigoDoom.cs
+    ├── 4 tipos: Zombi, Demonio, Cacodemon, Baron
+    ├── Perseguir()                 → IA de persecución
+    ├── PuedeAtacar()               → Rango de ataque
+    ├── ObtenerSprite()             → ASCII art por distancia
+    └── DistanciaA()                → Cálculo de distancia
 ```
 
 ---
 
-## ?? Sistema de Enemigos
+## 👾 Sistema de Enemigos
 
 <p align="center">
   <img src="docs/img/doom_enemigos.png" alt="Enemigos" width="600"/>
 </p>
 
-| Tipo | Vida | Da�o | Puntos | Velocidad | Sprite |
+| Tipo | Vida | Daño | Puntos | Velocidad | Sprite |
 |------|------|------|--------|-----------|--------|
 | Zombi | 20 | 5 | 50 | Lenta | `Z` |
 | Demonio | 40 | 10 | 100 | Media | `D` |
@@ -107,7 +107,7 @@ MotorDoom.cs : iMotorJuego
 
 ---
 
-## ?? Sistema de Armas
+## 🔫 Sistema de Armas
 
 <p align="center">
   <img src="docs/img/doom_arma.png" alt="Arma" width="400"/>
@@ -141,33 +141,33 @@ MotorDoom.cs : iMotorJuego
 
 ---
 
-## ??? Sistema de Mapas
+## 🗺️ Sistema de Mapas
 
-Los niveles est�n definidos como matrices 16x16 con diferentes tipos de muros:
+Los niveles están definidos como matrices 16x16 con diferentes tipos de muros:
 
-| C�digo | Tipo | Textura Cercana | Textura Lejana |
+| Código | Tipo | Textura Cercana | Textura Lejana |
 |--------|------|-----------------|----------------|
-| 0 | Vac�o | (espacio) | (espacio) |
-| 1 | Ladrillo | ? ? ? | ? : . |
+| 0 | Vacío | (espacio) | (espacio) |
+| 1 | Ladrillo | █ ▓ ▒ | ░ : . |
 | 2 | Piedra | % & # | + : . |
 | 3 | Metal | = \| I | ! : . |
 | 4 | Puerta | [ + | / . |
 
 ---
 
-## ?? Efectos Visuales
+## 🎨 Efectos Visuales
 
 - **Muzzle Flash:** Destello al disparar
-- **Flash de Da�o:** Bordes rojos `!!!` al recibir da�o
+- **Flash de Daño:** Bordes rojos `!!!` al recibir daño
 - **Crosshair:** Mira `--+--` en el centro
-- **Kill Feed:** Mensajes de eliminaci�n
-- **Animaci�n de Muerte:** Pantalla se llena de `X`
+- **Kill Feed:** Mensajes de eliminación
+- **Animación de Muerte:** Pantalla se llena de `X`
 - **YOU DIED:** Texto ASCII art al morir
 - **Pantalla de Victoria:** ASCII art al completar niveles
 
 ---
 
-## ?? Capturas de Pantalla
+## 📸 Capturas de Pantalla
 
 ### Pantalla de Inicio
 <p align="center">
@@ -191,53 +191,53 @@ Los niveles est�n definidos como matrices 16x16 con diferentes tipos de muros:
 
 ---
 
-## ?? Conceptos T�cnicos Implementados
+## 🔧 Conceptos Técnicos Implementados
 
-| Concepto | Aplicaci�n |
+| Concepto | Aplicación |
 |----------|------------|
-| **Raycasting** | Proyecci�n pseudo-3D calculando distancia de rayos a muros |
+| **Raycasting** | Proyección pseudo-3D calculando distancia de rayos a muros |
 | **Buffer de renderizado** | Array 2D de caracteres para evitar parpadeo |
-| **Depth buffer** | Array de profundidad para oclusi�n de enemigos |
-| **IA b�sica** | Enemigos persiguen al jugador con pathfinding simple |
-| **Sprite scaling** | Tama�o de enemigos var�a seg�n distancia |
+| **Depth buffer** | Array de profundidad para oclusión de enemigos |
+| **IA básica** | Enemigos persiguen al jugador con pathfinding simple |
+| **Sprite scaling** | Tamaño de enemigos varía según distancia |
 | **Collision detection** | Movimiento validado contra el mapa |
-| **Game loop** | Input ? Update ? Render a 50ms por frame |
+| **Game loop** | Input → Update → Render a 50ms por frame |
 
 ---
 
-## ?? Principios de POO
+## 🔧 Principios de POO
 
-| Principio | Implementaci�n |
+| Principio | Implementación |
 |-----------|---------------|
-| **Encapsulamiento** | Propiedades privadas, m�todos p�blicos definidos |
-| **Abstracci�n** | `iMotorJuego` define el contrato del motor |
+| **Encapsulamiento** | Propiedades privadas, métodos públicos definidos |
+| **Abstracción** | `iMotorJuego` define el contrato del motor |
 | **Herencia** | Tipos de enemigos con stats diferentes |
 | **Polimorfismo** | `MotorDoom` implementa `iMotorJuego` |
-| **SRP** | Cada clase tiene una �nica responsabilidad |
+| **SRP** | Cada clase tiene una única responsabilidad |
 
 ---
 
-## ????? Autor
+## 👨‍💻 Autor
 
-**Humberto Ram�rez Gruintal**
-Estudiante de Ingenier�a en Software � Tecnol�gico de Software
+**Humberto Ramírez Gruintal**
+Estudiante de Ingeniería en Software — Tecnológico de Software
 <p align="center">
   <img src="docs/img/foto_autor.png" alt="Foto del Autor" width="150" style="border-radius: 50%;"/>
 </p>
 
 ---
 
-## ?? Cl�usula de Uso de Inteligencia Artificial
+## 🤖 Cláusula de Uso de Inteligencia Artificial
 >    
-> Declaraci�n de uso de herramientas de IA
+> Declaración de uso de herramientas de IA
 >
-> Yo, Humberto Ram�rez Gruintal, estudiante de Ingenier�a en Software del Tecnol�gico de Software, 
-> declaro que en el desarrollo de este proyecto se utiliz� inteligencia artificial (Claude, de Anthropic) 
+> Yo, Humberto Ramírez Gruintal, estudiante de Ingeniería en Software del Tecnológico de Software, 
+> declaro que en el desarrollo de este proyecto se utilizó inteligencia artificial (Claude, de Anthropic) 
 > Para la Correcion de Errores y la mejora de interfaz grafica de sistema.
 >
-> Fecha: Mayo 2026 Instituci�n: Tecnologico de Software
+> Fecha: Mayo 2026 Institución: Tecnologico de Software
 >
 
 <p align="center">
-  <i>Desarrollado con ?? por Humberto Ram�rez Gruintal � Tec de Software, 2026</i>
+  <i>Desarrollado con ❤️ por Humberto Ramírez Gruintal — Tec de Software, 2026</i>
 </p>
