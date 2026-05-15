@@ -65,7 +65,7 @@ Ahorcado/
 │
 └── README.md
 ```
-
+      
 ---
 
 ##  Requisitos
@@ -94,30 +94,6 @@ dotnet build
 # Ejecutar
 dotnet run
 ```
-
----
-
-## 📸 Capturas de Pantalla
-
-### Menú Principal
-<p align="center">
-  <img src="docs/img/menu_principal.png" alt="Menú Principal" width="600"/>
-</p>
-
-### Ahorcado
-<p align="center">
-  <img src="docs/img/ahorcado_gameplay.png" alt="Ahorcado Gameplay" width="600"/>
-</p>
-
-### Viborita
-<p align="center">
-  <img src="docs/img/viborita_gameplay.png" alt="Viborita Gameplay" width="600"/>
-</p>
-
-### Doom Style
-<p align="center">
-  <img src="docs/img/doom_gameplay.png" alt="Doom Style Gameplay" width="600"/>
-</p>
 
 ---
 
