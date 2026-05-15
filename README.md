@@ -10,13 +10,6 @@
 
 **Doom Style** es un videojuego de disparos en primera persona desarrollado en **C# para consola**, que implementa un motor de **raycasting pseudo-3D** renderizado completamente en caracteres ASCII. Inspirado en el clásico DOOM (1993), el juego permite explorar niveles, combatir enemigos con IA y avanzar a través de múltiples niveles de dificultad.
 
----
-
-## 🎮 Gameplay
-
-<p align="center">
-  <img src="docs/img/doom_gameplay_1.png" alt="Doom Style Gameplay" width="700"/>
-</p>
 
 ---
 
@@ -167,30 +160,6 @@ Los niveles están definidos como matrices 16x16 con diferentes tipos de muros:
 
 ---
 
-## 📸 Capturas de Pantalla
-
-### Pantalla de Inicio
-<p align="center">
-  <img src="docs/img/doom_inicio.png" alt="Doom Inicio" width="600"/>
-</p>
-
-### Combate
-<p align="center">
-  <img src="docs/img/doom_combate.png" alt="Doom Combate" width="600"/>
-</p>
-
-### Game Over
-<p align="center">
-  <img src="docs/img/doom_gameover.png" alt="Doom Game Over" width="600"/>
-</p>
-
-### Victoria
-<p align="center">
-  <img src="docs/img/doom_victoria.png" alt="Doom Victoria" width="600"/>
-</p>
-
----
-
 ## 🔧 Conceptos Técnicos Implementados
 
 | Concepto | Aplicación |
@@ -221,9 +190,6 @@ Los niveles están definidos como matrices 16x16 con diferentes tipos de muros:
 
 **Humberto Ramírez Gruintal**
 Estudiante de Ingeniería en Software — Tecnológico de Software
-<p align="center">
-  <img src="docs/img/foto_autor.png" alt="Foto del Autor" width="150" style="border-radius: 50%;"/>
-</p>
 
 ---
 
