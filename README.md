@@ -12,12 +12,6 @@
 
 ---
 
-## 🎮 Gameplay
-
-<p align="center">
-  <img src="docs/img/viborita_gameplay_1.png" alt="Viborita Gameplay" width="600"/>
-</p>
-
 ### Elementos del Juego
 
 | Símbolo | Elemento | Descripción |
@@ -64,25 +58,6 @@ Viborita/
     ├── Ganado()
     └── Perdido()
 ```
-
----
-
-## 📸 Capturas de Pantalla
-
-### Inicio del Juego
-<p align="center">
-  <img src="docs/img/viborita_inicio.png" alt="Viborita Inicio" width="500"/>
-</p>
-
-### En Juego
-<p align="center">
-  <img src="docs/img/viborita_en_juego.png" alt="Viborita En Juego" width="500"/>
-</p>
-
-### Victoria
-<p align="center">
-  <img src="docs/img/viborita_victoria.png" alt="Viborita Victoria" width="500"/>
-</p>
 
 ---
 
