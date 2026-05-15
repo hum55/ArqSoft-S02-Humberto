@@ -1,7 +1,7 @@
 #  Battle Arcade — Centro de Juegos de Consola
 
 <p align="center">
-  <img src="docs/img/banner_principal.png" alt="Battle Arcade Banner" width="800"/>
+  <img src=""C:\Users\hr432\Pictures\Screenshots\Captura de pantalla 2026-05-14 222003.png"" alt="Battle Arcade Banner" width="800"/>
 </p>
 
 ---
