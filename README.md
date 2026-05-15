@@ -1,4 +1,4 @@
-# 🎮 Battle Arcade — Centro de Juegos de Consola
+#  Battle Arcade — Centro de Juegos de Consola
 
 <p align="center">
   <img src="docs/img/banner_principal.png" alt="Battle Arcade Banner" width="800"/>
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Descripción
+##  Descripción
 
 **Battle Arcade** es una colección de tres videojuegos desarrollados en **C# con .NET**, ejecutables desde una terminal con interfaz estilo arcade retro. El proyecto demuestra la aplicación de principios de **Programación Orientada a Objetos**, patrones de diseño, manejo de interfaces y estructuras de datos avanzadas.
 
@@ -68,7 +68,7 @@ Ahorcado/
 
 ---
 
-## 🚀 Requisitos
+##  Requisitos
 
 | Requisito | Versión |
 |-----------|---------|
@@ -185,13 +185,8 @@ Estudiante de Ingeniería en Software — Tecnológico de Software
 > declaro que en el desarrollo de este proyecto se utilizó **inteligencia artificial (Claude, de Anthropic)** 
 > Para la Correcion de Errores y la mejora de interfaz grafica de sistema. 
 >
-> El diseño conceptual, la lógica de negocio, las decisiones arquitectónicas y la integración final del proyecto fueron realizados por el autor. La IA fue utilizada como herramienta complementaria de desarrollo, similar al uso de documentación oficial, foros técnicos o asistentes de código.
->
-> Todo el código generado fue revisado, comprendido y validado antes de su integración al proyecto.
->
 > **Fecha:** Mayo 2026
-> **Institución:** Tecnológico de Monterrey
-> **Programa:** Ingeniería en Software
+> **Institución:** Tecnologico de Software
 
 ---
 
