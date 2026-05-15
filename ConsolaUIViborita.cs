@@ -1,62 +1,151 @@
-﻿        namespace Ahorcado
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Ahorcado
+{
+    public class ConsolaUIViborita
     {
-        public class ConsolaUIViborita
+        private readonly MotorViborita _motor;
+
+        public ConsolaUIViborita(MotorViborita motor)
         {
-            private readonly MotorViborita _motor;
+            _motor = motor ?? throw new ArgumentNullException(nameof(motor));
+        }
 
-            public ConsolaUIViborita(MotorViborita motor)
+        public void MostrarTablero()
+        {
+            Console.SetCursorPosition(0, 0);
+
+            // Titulo
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ╔══════════════════════╗");
+            Console.Write("  ║  ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("VIBORITA");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("  PTS:");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("{0,3}", _motor.Puntos);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ║");
+            Console.WriteLine("  ╠══════════════════════╣");
+
+            // Borde superior del tablero
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("  ║");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("╔");
+            for (int x = 0; x < _motor.Ancho; x++)
+                Console.Write("═");
+            Console.Write("╗");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("║");
+
+            // Obtener la cabeza
+            var cuerpoList = _motor.Cuerpo.ToList();
+            var cabeza = cuerpoList.Count > 0 ? cuerpoList[0] : (0, 0);
+
+            // Tablero
+            for (int y = 0; y < _motor.Alto; y++)
             {
-                _motor = motor;
-            }
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write("  ║");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("║");
 
-            public void MostrarTablero()
-            {
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine($"=== VIBORITA === Puntos: {_motor.Puntos}");
-                Console.WriteLine("+" + new string('-', _motor.Ancho) + "+");
-
-                for (int y = 0; y < _motor.Alto; y++)
+                for (int x = 0; x < _motor.Ancho; x++)
                 {
-                    Console.Write("|");
-                    for (int x = 0; x < _motor.Ancho; x++)
+                    if (x == cabeza.Item1 && y == cabeza.Item2)
                     {
-                        var pos = (x, y);
-
-                        // Lógica de dibujo corregida
-                        if (_motor.Cuerpo.First() == pos)
-                        {
-                            Console.Write("@"); // cabeza
-                        }
-                        else if (_motor.Cuerpo.Contains(pos))
-                        {
-                            Console.Write("o"); // cuerpo
-                        }
-                        else if (_motor.Comida == pos)
-                        {
-                            Console.Write("*"); // comida
-                        }
-                        else
-                        {
-                            Console.Write(" "); // vacío
-                        }
+                        // Cabeza
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("@");
                     }
-                    Console.WriteLine("|");
+                    else if (cuerpoList.Any(s => s.Item1 == x && s.Item2 == y))
+                    {
+                        // Cuerpo
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("█");
+                    }
+                    else if (_motor.Comida.Item1 == x && _motor.Comida.Item2 == y)
+                    {
+                        // Comida
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("◆");
+                    }
+                    else
+                    {
+                        // Vacio
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.Write("·");
+                    }
                 }
 
-                Console.WriteLine("+" + new string('-', _motor.Ancho) + "+");
-                Console.WriteLine("Flechas: mover | Q: salir");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("║");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("║");
             }
 
-            public ConsoleKey LeerTecla()
+            // Borde inferior
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("  ║");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("╚");
+            for (int x = 0; x < _motor.Ancho; x++)
+                Console.Write("═");
+            Console.Write("╝");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("║");
+
+            // Barra de progreso
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("  ║ ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write("Meta: ");
+            for (int i = 0; i < 10; i++)
             {
-                if (Console.KeyAvailable)
-                    return Console.ReadKey(intercept: true).Key;
-
-                return ConsoleKey.NoName;
+                if (i < _motor.Puntos)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("■ ");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("□ ");
+                }
             }
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("║");
 
-            public void MostrarMensaje(string mensaje) =>
+            // Controles
+            Console.Write("  ║ ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Flechas=Mover  Q=Salir");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine(" ║");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ╚══════════════════════╝");
+
+            Console.ResetColor();
+        }
+
+        public ConsoleKey LeerTecla()
+        {
+            if (Console.KeyAvailable)
+                return Console.ReadKey(true).Key;
+            return ConsoleKey.NoName;
+        }
+
+        public void MostrarMensaje(string mensaje)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(mensaje);
+            Console.ResetColor();
+            Thread.Sleep(2000);
+            Console.ReadKey(true);
         }
     }
-
+}
